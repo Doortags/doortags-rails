@@ -1,1 +1,0 @@
-DoortagsRails::Application.config.secret_token = 'dccc7e40d5e21fb3c3785125205263bff9a717f3f3d15bdb0c089169d39f16ec6edef6a5efa36e24cb320e723600eae7c63fb64a2f22a2ad635d1cf22eef842e'
