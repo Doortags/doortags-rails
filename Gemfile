@@ -8,6 +8,8 @@ gem 'resque'
 gem 'haml-rails'
 gem 'thin'
 gem 'json'
+gem 'mail'
+gem 'twilio-ruby'
 
 group :development do
   gem 'sqlite3'
