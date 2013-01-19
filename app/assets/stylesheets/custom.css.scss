@@ -1,0 +1,68 @@
+/* header */ 
+header {
+	background-color: white; 
+	width: auto; 
+	height: 60px; 
+
+	h1 {
+		size: 24.444;
+		font-weight: bold; 
+		font-family: 'Oswald', sans-serif;
+		float: left; 
+		margin-left: 1em; 
+	}
+
+	nav {
+
+		float: right;
+		margin-top: 1.7em; 
+		margin-right: 7em; 
+
+			ul {
+
+			 li {
+				list-style: none; 
+				display: inline; 
+				margin-right: 2em;
+
+					a {
+
+						font-size: 18px;
+
+						&:hover {
+							text-decoration: none;
+						}
+
+					}
+			 }
+			
+		}
+
+	}
+}
+
+
+
+/* home */ 
+
+.hero {
+	background: #ffffff url("front-door.jpg") no-repeat; 
+	width: 100%; 
+	height: 700px; 
+
+		h2#learnMore {
+			color: white;
+			text-align: center; 
+			margin-top: 4em;
+			width: 940px;
+
+				#inlineBlock {
+					display: inline-block;
+					background-color: rgba(0,0,0,0.5);
+					padding: 0.5em;
+					border-radius: 5em;
+				}
+
+			}
+
+}

@@ -1,5 +1,6 @@
 DoortagsRails::Application.routes.draw do
   devise_for :users
+  resource :tags
 
   namespace :api do
     resources :auth, :only => [:create]
