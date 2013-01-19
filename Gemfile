@@ -19,6 +19,7 @@ end
 
 group :production do
   # MySQL or PostgreSQL?
+  gem 'pg'
 end
 
 
