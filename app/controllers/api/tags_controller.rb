@@ -1,12 +1,13 @@
 class Api::TagsController < Api::BaseController
 	respond_to :json 
+	before_filter :verify_auth_token 
 
 	def show
 		render :json => Tag.all 
 	end
 
 	def update
-		@tag = Tag.find_by_tag_id(params[:tag_id])
+		@tag = @user.tags.find_by_tag_id(params[:tag_id])
 			if @tag.update_attributes(params[:tag])
 				render :status => 200,
 					:json => {
@@ -14,6 +15,12 @@ class Api::TagsController < Api::BaseController
 					tag: @tag
 		}
     end
+ 	end
+
+ 	def destroy
+ 	end
+
+ 	def create
  	end
 
 end
