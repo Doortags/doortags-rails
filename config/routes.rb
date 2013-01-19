@@ -7,6 +7,7 @@ DoortagsRails::Application.routes.draw do
     resources :auth, :only => [:create]
     post "auth/invalidate", :to => "auth#destroy"
     resource :tags
+    get '/message', to: "messages#send_message_to"
   end
 
 
