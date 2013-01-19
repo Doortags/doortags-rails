@@ -8,7 +8,7 @@ class TagsController < ApplicationController
 		@tag = current_user.tags.build(params[:tag])
 		if @tag.save
 			flash[:success] = "Tag created"
-			redirect_to user_path
+			redirect_to "user/#{current_user.id}"
 		end 
 	end
 
