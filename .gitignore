@@ -17,9 +17,6 @@
 # CTags
 tags
 
-# secret_token
-config/initializers/secret_token.rb
-
 # Editor files
 *.swp
 *~
