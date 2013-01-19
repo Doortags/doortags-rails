@@ -46,23 +46,64 @@ header {
 /* home */ 
 
 .hero {
-	background: #ffffff url("front-door.jpg") no-repeat; 
+	background: #ffffff url("front-door2.JPG") no-repeat; 
+	background-position: 0 -200px;
 	width: 100%; 
 	height: 700px; 
 
-		h2#learnMore {
-			color: white;
-			text-align: center; 
-			margin-top: 4em;
-			width: 940px;
+			button {
+				border-radius: 0;
+				font-size: 20px;
+				height: 50px;
+				text-align: center;
+				margin-left: auto;
+				margin-right: auto;
+				float: left;
+				display: inline;
+			}
 
-				#inlineBlock {
+			h1 {
+				font-family: 'Raleway';
+				color: white;
+				font-size: 100px;
+				text-align: center; 
+				margin-top: 1em;
+
+					#inlineBlock {
 					display: inline-block;
 					background-color: rgba(0,0,0,0.5);
-					padding: 0.5em;
-					border-radius: 5em;
+					padding: 0.3em;
+					letter-spacing: 5px;
 				}
+			}
+
+			p {
+				margin-top: 1em;
+				font-size: 20px;
+				color: white;
+				text-align: center; 
+				background-color: rgba(0,0,0,0.5);
+					padding: 0.3em;
+					letter-spacing: 5px;
 
 			}
+}
+
+.steps {
+	height: 600px;
+
+
+	.stepsShoutOut {
+		height: 100px;
+
+		h1 {
+			font-weight: bold;
+			text-align: center;
+			font-size: 50px;
+			border-bottom: solid 2px black;
+			padding-bottom: 10px;
+		}
+
+	}
 
 }
