@@ -13,3 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# CTags
+tags
+
+# secret_token
+config/initializers/secret_token.rb
