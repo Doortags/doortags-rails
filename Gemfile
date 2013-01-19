@@ -6,6 +6,8 @@ gem 'devise'
 
 gem 'resque'
 gem 'haml-rails'
+gem 'thin'
+gem 'json'
 
 group :development do
   gem 'sqlite3'
