@@ -1,0 +1,12 @@
+= @user 
+
+= form_for @tag do |f|
+  -if @tag.errors.any?
+    - @tag.errors.full_messages.each do |msg|
+      - flash[:error] = msg
+
+  = f.text_field :location, placeholder: "Nick Name"
+
+  = f.submit 'Make new tag location', class: "btn btn-large btn-primary clearfix"
+
+=render @tag_list

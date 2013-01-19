@@ -1,11 +1,13 @@
 DoortagsRails::Application.routes.draw do
   devise_for :users
+  resources :users, :only => [:show]
   resource :tags
 
   namespace :api do
     resources :auth, :only => [:create]
     post "auth/invalidate", :to => "auth#destroy"
   end
+
 
   # Sample resource route with options:
   #   resources :products do

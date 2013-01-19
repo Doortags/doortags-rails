@@ -1,6 +1,18 @@
 class TagsController < ApplicationController
 
-	def show
+	def index  
+		@tag = Tags.all
+	end
+
+	def create
+		@tag = current_user.tags.build(params[:tag])
+		if @tag.save
+			flash[:success] = "Tag created"
+			redirect_to user_path
+		end 
+	end
+
+	def destroy 
 	end
 
 end
