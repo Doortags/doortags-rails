@@ -6,6 +6,7 @@ DoortagsRails::Application.routes.draw do
   namespace :api do
     resources :auth, :only => [:create]
     post "auth/invalidate", :to => "auth#destroy"
+    resource :tags
   end
 
 
