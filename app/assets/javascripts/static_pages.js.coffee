@@ -14,3 +14,6 @@
 
 	$('header h1').click ->
 		window.location = "/"
+
+	$('#scrollAbout').click -> 
+		scrollAboutPage ".steps"

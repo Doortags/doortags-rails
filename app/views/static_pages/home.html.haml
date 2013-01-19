@@ -9,30 +9,30 @@
 	.container
 		.stepsShoutOut
 			%h1 How DoorTags works
-		.span4
+		.span4.noLeft
 			%h2 1. Set up tag and location
 			%p Set up your tag and give it a location name online with whatever you like. "Das Baus Haus," "Tony's crib," and "The Batcave" are all acceptable location names.
 		.span4 
 			%h2 2. Get notified
-			%p When someone puts their smartphone against the NFC tag, they send you a message with their message and where they are sending the message from. 
+			%p When someone puts their smartphone against the NFC tag, we send you a message that they are there. We also give them the ability to send you quick text
 		.span4	
 			%h2 3. Stay number anonymous
 			%p We understand the importance of privacy. People do not get your number when they contact you, but they have the option of sending you their number, so you can contact them back. Setting the tags make them read-only so others cannot hijack your tags.
 
-.benefitOne 
-	%h2 Set up as many tags as you want.
+.container.benefitOne 
+	%h2 <b>All the tags.</b> Set up as many tags as you want.
 	%p The amount of locations you can set up is only limited by the the number of NFC tags you have. Customize each tag with an random name. 
-.benefitTwo
-	%h2 Notifications around the world. 
-	%p Whether your out for a run or fighting evil halfway across the world, we will send you a text that someone is at your door. DoorTag will send you a text message when someone is at your door in over 150 countries.
-.benefitThree 
-	%h2 Know where the person is and reply instantly 
+.container.benefitTwo
+	%h2 <b>WorldWide.</b> Notifications around the world. 
+	%p Whether your out for a run or fighting evil halfway across the world, we will send you a text that someone is at your door. DoorTag will send you a text message when someone is at your door in 150+ countries.
+.container.benefitThree 
+	%h2 <b>Lightling fast.</b> Reply instantly.
 	%p Give a quick text back to whoever is at your door. We will tell you the location and give you their number, so you can quickly respond, or you can run down the stairs and open the door!
 
-.signup
-	.container
-		.span3 
-			=link_to "Sign Up Now!", "users/sign_in", class: "btn btn-primary"
+.container.signUp
+	.signUpContainer
+		%h2 What are you waiting for?
+		=link_to "Sign Up Now!", "users/sign_in", class: "btn btn-info"
 
 
 

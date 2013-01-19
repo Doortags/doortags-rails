@@ -5,8 +5,14 @@
 			%li 
 				%a#scrollAbout About
 			%li 
-				%a#scrollSignUp= link_to "Sign Up", "/users/sign_up"
-			%li 
 				%a#scrollContact Contact
-			%li
-				%a= link_to "Profile", "/users/#{current_user.id}"
+			-unless current_user
+				%li 
+					%a#scrollSignUp= link_to "Sign Up", "/users/sign_up"
+				%li 
+					%a#scrollSignIn=	 link_to "Sign In", new_user_session_path
+			-if current_user
+				%li
+					%a= link_to "Profile", "/users/#{current_user.id}"
+				%li 
+					%a= link_to('Logout', destroy_user_session_path, :method => :delete)

@@ -11,7 +11,13 @@ header {
 		float: left; 
 		margin-left: 1em; 
 		font-color: black;
+		opacity: 0.5;
+
+			&:hover{
+				opacity: 1;
+			}
 	}
+
 
 	nav {
 
@@ -60,11 +66,8 @@ header {
 				border-radius: 0;
 				font-size: 20px;
 				height: 50px;
-				text-align: center;
-				margin-left: auto;
-				margin-right: auto;
-				float: left;
-				display: inline;
+				margin-left: 45%;
+				margin-top: 1em;
 			}
 
 			h1 {
@@ -89,13 +92,13 @@ header {
 				text-align: center; 
 				background-color: rgba(0,0,0,0.5);
 				padding: 0.3em;
+				line-height: 1.3em;
 			}
 }
 
 .steps {
 	margin-top: 2em;
-	height: 600px;
-
+	height: 400px;
 
 	.stepsShoutOut {
 		height: 100px;
@@ -104,10 +107,102 @@ header {
 			font-weight: bold;
 			text-align: center;
 			font-size: 50px;
-			border-bottom: solid 2px black;
+			border-bottom: solid 1px black;
 			padding-bottom: 0.5em;
 		}
 
 	}
 
+	.span4.noLeft{
+		margin-left: 0;
+	}
+
 }
+
+.benefitOne {
+	padding-top: 1em;
+	height: 300px;
+	border-top: 1px solid black;
+
+	h2 {
+		float: left;
+		width: 600px;
+		font-size:40px;
+		
+
+		b {
+			font-family: 'Raleway';
+			font-size: 60px;
+		}
+	}
+
+	p {
+		float: left;
+		font-size: 20px;
+	}
+}
+
+.benefitTwo {
+	padding-top: 1em;
+	height: 300px;
+	border-top: 1px solid black;
+
+	h2 {
+		float: right;
+		width: 600px;
+		font-size: 40px;
+
+		b {
+			font-family: 'Raleway';
+			font-size: 60px
+		}
+	}
+
+	p {
+		float: right;
+		margin-right: 4em;
+		font-size: 20px;
+	}
+}
+
+.benefitThree {
+	padding-top: 1em;
+	height: 300px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+
+	h2 {
+		float: left;
+		width: 600px;
+		font-size: 40px;
+
+		b {
+			font-family: 'Raleway';
+			font-size: 60px;
+		}
+	}
+
+	p {
+		float: left;
+		font-size: 20px;
+	}
+}
+
+.signUp {
+	height: 150px;
+
+	h2 {
+		text-align: center;
+	}
+
+	a {
+		font-size: 20px;
+	}
+
+	.btn {
+		margin-left: 43%;
+		border-radius: 0;
+		height: 30px;
+	}
+}
+
