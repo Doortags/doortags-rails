@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :tag do
     tag_code 1
-    location "MyString"
+    location { Faker::Address.street_address }
     user_id 1
   end
 end
