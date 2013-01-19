@@ -32,5 +32,6 @@ DoortagsRails::Application.routes.draw do
   #     end
   #   end
 
-  root :to => 'static_pages#index'
+  get '/', to: 'static_pages#home'
+  root to: 'static_pages#home'
 end
