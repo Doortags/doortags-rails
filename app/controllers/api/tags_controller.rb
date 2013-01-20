@@ -1,6 +1,6 @@
 class Api::TagsController < Api::BaseController
   respond_to :json 
-  before_filter :verify_auth_token 
+  before_filter :verify_auth_token, :except => [:show]
 
   # Pass in: the user_id of the user you want to see the tags of
   # Return: list of tags from one specific user
