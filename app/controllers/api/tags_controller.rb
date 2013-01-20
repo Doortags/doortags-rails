@@ -1,24 +1,20 @@
 class Api::TagsController < Api::BaseController
 	respond_to :json 
-	# before_filter :verify_auth_token 
+	before_filter :verify_auth_token 
 
 	# Pass in: the user_id of the user you want to see the tags of
 	# Return: list of tags from one specific user
 	# Route: /tags/(:user_id)
 	def index 
 		@tags_list = Tag.where('user_id=?', params[:user_id])
-		if @tags_list != nil
+		if @tags_list.any?
 			render :status => 200,
 				:json => {
 					status: 200, 
 					tags: @tags_list
 				}
 		else 
-			render :status => 404, 
-				:json => {
-					status: 404, 
-					sadface: "yes"
-				}
+			render_json_response(404, "no such user_id")
 		end
 	end
 
@@ -36,11 +32,7 @@ class Api::TagsController < Api::BaseController
 					location: @tag.location 
 				}
 		else 
-			render :status => 404, 
-				:json => {
-					status: 404, 
-					sadface: "yes"
-				}
+			render_json_response(404, "No such tag_code")
 		end
 	end
 
@@ -58,11 +50,7 @@ class Api::TagsController < Api::BaseController
 					location: @tag.location 
 				}
 		else 
-			render :status => 404, 
-				:json => {
-					status: 404, 
-					sadface: "yes"
-				}
+			render_json_response(404, "No such tag id")
 		end
 	end
 
@@ -70,7 +58,6 @@ class Api::TagsController < Api::BaseController
 	# Update: The location of the tag
 	# Route: /tags/update/(:tag_code)
 	def update
-		@user = current_user
 		@tag = @user.tags.find_by_tag_code(params[:tag_code])
 			if @tag.update_attributes(location: params[:location])
 				render :status => 200,
@@ -79,11 +66,7 @@ class Api::TagsController < Api::BaseController
 					tag: @tag
 		}
 			else 
-				render :status => 404, 
-					:json => {
-						status: 404, 
-						sadface: "yes"
-					}
+				render_json_response(404, "update failed")
 			end
     end
  	end
@@ -93,14 +76,16 @@ class Api::TagsController < Api::BaseController
  	# Route: /tags/(:tag_code)
  	def destroy
  		@tag = Tag.find_by_tag_code(params[:tag_code])
- 		@tag.destroy
+ 		if @tag.destroy 
+ 			render_json_response(200, "Destroy successful")
+ 		else
+			render_json_response(404, "Destroy not successful")
  	end
 
  	# Pass in: tag parameters -- location and tag code
  	# Create: a New tag associated to the auth'd user with defined params.
  	# Route: post to /tags
  	def create
- 		@user = User.find_by_id(10) #This is just for testing so far
  		@tag = @user.tags.build(params[:tag])
  		if @tag.save
  			render :status => 200,
@@ -109,11 +94,7 @@ class Api::TagsController < Api::BaseController
 					tag: @tag
 		}
 		else 
-			render :status => 406,
-						:json => {
-						status: 406,
-						failure: yes
-			}
+			render_json_response(404, "could not create tag")
 	 	end
 
  end
