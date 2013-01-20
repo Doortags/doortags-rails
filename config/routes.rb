@@ -8,7 +8,7 @@ DoortagsRails::Application.routes.draw do
     post "auth/invalidate", :to => "auth#destroy"
     resources :tags, :only => [:create]
     get '/tags/(:user_id)', to: 'tags#index'
-    put '/tags/update/(:tag_code)/(:location)', to: 'tags#update'
+    put '/tags/update/(:tag_code)', to: 'tags#update'
     get '/tags/show_by_code/(:tag_code)', to: 'tags#show_by_code'
     get '/tags/show_by_id/(:id)', to: 'tags#show_by_id'
     delete '/tags/(:tag_code)', to: 'tags#destroy'

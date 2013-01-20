@@ -7,7 +7,7 @@ class Api::TagsController < Api::BaseController
 	# Route: /tags/(:user_id)
 	def index 
 		@tags_list = Tag.where('user_id=?', params[:user_id])
-		if @tags_list?
+		if @tags_list != nil
 			render :status => 200,
 				:json => {
 					status: 200, 
@@ -27,12 +27,12 @@ class Api::TagsController < Api::BaseController
 	# Route: /tags/show_by_code/(:tag_code)
 	def show_by_code
 		@tag = Tag.find_by_tag_code(params[:tag_code])
-		if @tag?
+		if @tag != nil 
 			render :status => 200,
 				:json => {
 					status: 200, 
-					user: User.find_by_id(@tag.user_id)
-					id: @tag.id
+					user: User.find_by_id(@tag.user_id),
+					id: @tag.id,
 					location: @tag.location 
 				}
 		else 
@@ -49,12 +49,12 @@ class Api::TagsController < Api::BaseController
 	# Route: /tags/show_by_id/(:id)
 	def show_by_id
 		@tag = Tag.find_by_id(params[:id])
-		if @tag?
+		if @tag != nil && User.find_by_id(@tag.user_id) != nil
 			render :status => 200,
 				:json => {
 					status: 200, 
-					user: User.find_by_id(@tag.user_id)
-					tag_code: @tag.tag_code
+					user: User.find_by_id(@tag.user_id),
+					tag_code: @tag.tag_code,
 					location: @tag.location 
 				}
 		else 
@@ -68,10 +68,10 @@ class Api::TagsController < Api::BaseController
 
 	# Pass in: tag_code and new location
 	# Update: The location of the tag
-	# Route: /tags/update/(:tag_code)/(:location)
+	# Route: /tags/update/(:tag_code)
 	def update
 		@user = current_user
-		@tag = @user.tags.find_by_tag_code(params[:tag_code)
+		@tag = @user.tags.find_by_tag_code(params[:tag_code])
 			if @tag.update_attributes(location: params[:location])
 				render :status => 200,
 					:json => {
@@ -115,6 +115,5 @@ class Api::TagsController < Api::BaseController
 						failure: yes
 			}
 	 	end
- end
 
-end
+ end
