@@ -11,10 +11,6 @@ class Api::MessagesController < Api::BaseController
     user = Tag.find_by_id(tag_id).user
     number_to_send_to = user.phone
     location = Tag.find_by_id(tag_id).location
- 
-    twilio_sid = "ACfffe2a378d744f6c9c2a280c93a5be21"
-    twilio_token = "374dca84e42fc9ca7f67319cb58b601a"
-    twilio_phone_number = "2674158802"
 
     if name.nil?
       name = "someone"
@@ -25,18 +21,11 @@ class Api::MessagesController < Api::BaseController
     end
 
     unless user.nil?
-      @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
-   
-      @twilio_client.account.sms.messages.create(
-        :from => "+1#{twilio_phone_number}",
-        :to => number_to_send_to,
-        :body => "Hey, #{name} is at your #{location} and he says \"#{message}\""
-      )	
-
+      Resque.enqueue(TwilioRequest, user.id, tag_id, message, name)
+      
       render :json => {
         itworks!: "hello"
       }
-
     else 
 
       render :json => {
