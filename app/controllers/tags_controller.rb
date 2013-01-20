@@ -1,8 +1,35 @@
 class TagsController < ApplicationController
 
 	def index  
-		@tag = Tags.all
-	end
+		@tag = Tags.alphabetical
+
+		respond_to do |format|
+      		format.html # index.html.erb
+      		format.json { render json: @books }
+    	end
+  	end
+
+	def show
+		@tag = Tag.find(params[:id])
+
+    	respond_to do |format|
+      	format.html # show.html.erb
+      	format.json { render json: @tag }
+    	end
+  	end
+
+  	def new
+    	@tag = Tag.new
+    
+    	respond_to do |format|
+     		format.html # new.html.erb
+      	format.json { render json: @tag }
+    	end
+  	end
+
+  	def edit
+  		@tags = Tags.find(params[:id])
+  	end
 
 	def edit
 		@tag = Tag.find_by_id(params[:id])
@@ -24,12 +51,6 @@ class TagsController < ApplicationController
 			flash[:success] = "Tag created"
 			redirect_to :back
 		end 
-	end
-
-	def destroy 
-		@tag = Tag.find_by_id(params[:id])
-		@tag.destroy 
-		redirect_to :back
 	end
 
 end
