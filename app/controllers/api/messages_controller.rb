@@ -8,14 +8,6 @@ class Api::MessagesController < Api::BaseController
     tag_code = params[:tag_code]
     name = params[:name]
 
-    unless name?
-      name = "someone"
-    end
-
-    unless message?
-      message = "I didn't send a message!"
-    end
-
     user = Tag.find_by_tag_code(tag_code).user
     number_to_send_to = user.phone
     location = Tag.find_by_tag_code(tag_code).location
@@ -24,8 +16,15 @@ class Api::MessagesController < Api::BaseController
     twilio_token = "374dca84e42fc9ca7f67319cb58b601a"
     twilio_phone_number = "2674158802"
 
+    if name.nil?
+      name = "someone"
+    end
 
-    if user?
+    if message.nil?
+      message = "nothing..."
+    end
+
+    unless user.nil?
       @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
    
       @twilio_client.account.sms.messages.create(
