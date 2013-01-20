@@ -53,7 +53,7 @@ class Api::TagsController < Api::BaseController
 			render :status => 200,
 				:json => {
 					status: 200, 
-					user: User.find_by_id(@tag.user_id),
+					user: User.find_by_id(@tag.user_id).name,
 					tag_code: @tag.tag_code,
 					location: @tag.location 
 				}
@@ -100,7 +100,7 @@ class Api::TagsController < Api::BaseController
  	# Create: a New tag associated to the auth'd user with defined params.
  	# Route: post to /tags
  	def create
- 		@user = User.find_by_id(4) #This is just for testing so far
+ 		@user = User.find_by_id(10) #This is just for testing so far
  		@tag = @user.tags.build(params[:tag])
  		if @tag.save
  			render :status => 200,
