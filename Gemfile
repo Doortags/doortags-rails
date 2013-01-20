@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails', '3.2.11'
 
 gem 'devise'
 
 gem 'resque'
 gem 'haml-rails'
-gem 'thin'
 gem 'json'
 gem 'mail'
 gem 'twilio-ruby'
@@ -20,6 +21,7 @@ end
 group :production do
   # MySQL or PostgreSQL?
   gem 'pg'
+  gem 'thin'
 end
 
 
