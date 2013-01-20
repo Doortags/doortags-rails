@@ -6,8 +6,12 @@ DoortagsRails::Application.routes.draw do
   namespace :api do
     resources :auth, :only => [:create]
     post "auth/invalidate", :to => "auth#destroy"
-    resources :tags
-    get '/tags(:user_id)', to: 'tags#index'
+    resources :tags, :only => [:create]
+    get '/tags/(:user_id)', to: 'tags#index'
+    put '/tags/update/(:tag_code)/(:location)', to: 'tags#update'
+    get '/tags/show_by_code/(:tag_code)', to: 'tags#show_by_code'
+    get '/tags/show_by_id/(:id)', to: 'tags#show_by_id'
+    delete '/tags/(:tag_code)', to: 'tags#destroy'
     post '/message', to: "messages#send_message_to"
   end
 
