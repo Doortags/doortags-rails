@@ -1,36 +1,37 @@
 .container
-	.profileContainer
-		%h1 Profile
-		%table.table-bordered.table-hover
-			%tbody
-				%tr
-					%td Name 
-					%td= current_user.name
-				%tr
-					%td Email
-					%td= current_user.email
-				%tr 
-					%td Phone Number
-					%td= current_user.phone
-		%h1 Tags
-		%table.table-bordered.table-hover 
-			%thead 
-				%tr
-					%th Tag Code
-					%th Tag Location
-					%th Edit
-					%th Delete
-			%tbody
-				-@tags_list.each do |tag|
-					-if tag.id?
-						%tr
-							%td= tag.location	
-							%td= link_to "Edit", edit_tag_path(tag), class: "btn btn-primary"
-							%td= link_to "Delete", tag_path(tag), method: :delete, class: "btn btn-danger"
+  .profileContainer
+    %h1 Profile
+    %table.table-bordered.table-hover
+      %tbody
+        %tr
+          %td Name 
+          %td= current_user.name
+        %tr
+          %td Email
+          %td= current_user.email
+        %tr 
+          %td Phone Number
+          %td= current_user.phone
+    %h1 Tags
+    %table.table-bordered.table-hover 
+      %thead 
+        %tr
+          %th Tag ID
+          %th Tag Location
+          %th Edit
+          %th Delete
+      %tbody
+        -@tags_list.each do |tag|
+          -if tag.id?
+            %tr
+              %td= tag.id
+              %td= tag.location  
+              %td= link_to "Edit", edit_tag_path(tag), class: "btn btn-primary"
+              %td= link_to "Delete", tag_path(tag), method: :delete, class: "btn btn-danger"
 
-		.newTagForm
-			= form_for @tag do |f|
+    .newTagForm
+      = form_for @tag do |f|
 
-				= f.text_field :location, placeholder: "Location e.g. \"Home\""
+        = f.text_field :location, placeholder: "Location e.g. \"Home\""
 
-				= f.submit 'Make New Tag', class: "btn btn-large btn-primary clearfix"
+        = f.submit 'Make New Tag', class: "btn btn-large btn-primary clearfix"
