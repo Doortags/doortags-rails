@@ -5,12 +5,12 @@ class Api::MessagesController < Api::BaseController
   # Sends message to user with said tag_code
 	def send_message_to
 		message = params[:message]
-    tag_code = params[:tag_code]
+    tag_id = params[:tag_id]
     name = params[:name]
 
-    user = Tag.find_by_tag_code(tag_code).user
+    user = Tag.find_by_id(tag_id).user
     number_to_send_to = user.phone
-    location = Tag.find_by_tag_code(tag_code).location
+    location = Tag.find_by_id(tag_id).location
  
     twilio_sid = "ACfffe2a378d744f6c9c2a280c93a5be21"
     twilio_token = "374dca84e42fc9ca7f67319cb58b601a"
