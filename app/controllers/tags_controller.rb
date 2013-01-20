@@ -39,7 +39,7 @@ class TagsController < ApplicationController
 		@tag = Tag.find_by_id(params[:id])
 		if @tag.update_attributes(params[:tag])
        flash[:success] = "Tag successfully updated!"
-       redirect_to "user/#{current_user.id}"
+       redirect_to user_path(current_user)
      else
       render 'edit'
     end
@@ -51,6 +51,12 @@ class TagsController < ApplicationController
 			flash[:success] = "Tag created"
 			redirect_to :back
 		end 
+	end
+
+	def destroy
+		@tag = Tag.find_by_id(params[:id])
+		@tag.destroy
+		redirect_to :back
 	end
 
 end

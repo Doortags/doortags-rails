@@ -27,7 +27,7 @@
 							%td= tag.tag_code
 							%td= tag.location	
 							%td= link_to "Edit", edit_tag_path(tag), class: "btn btn-primary"
-							%td= link_to "Delete", "/tags?id=#{tag.id}", method: :delete, class: "btn btn-danger"
+							%td= link_to "Delete", tag_path(tag), method: :delete, class: "btn btn-danger"
 
 		.newTagForm
 			= form_for @tag do |f|
