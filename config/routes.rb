@@ -1,6 +1,8 @@
 DoortagsRails::Application.routes.draw do
   devise_for :users
-  resources :users, :only => [:show]
+  get "/user", :to => "users#show"
+  match "/users" => "users#show"
+
   resources :tags
 
   namespace :api do
