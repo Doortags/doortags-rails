@@ -6,7 +6,6 @@ gem 'devise'
 
 gem 'resque'
 gem 'haml-rails'
-gem 'thin'
 gem 'json'
 gem 'mail'
 gem 'twilio-ruby'
