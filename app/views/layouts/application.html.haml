@@ -3,12 +3,10 @@
   %head
     %title DoorTags
     %meta{:charset => "utf-8"}
-    = javascript_include_tag 'jquery'
+    = stylesheet_link_tag 'application', :media => 'all'
     = javascript_include_tag 'application'
-    = stylesheet_link_tag 'application'
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Oswald:700|Raleway:100'
     = csrf_meta_tags
-    = yield :head
   %body
     - flash.each do |key, value|
       .alert.alert{:class => "#{key}"}= value 
