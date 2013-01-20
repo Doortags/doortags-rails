@@ -1,5 +1,4 @@
 class Api::TagsController < Api::BaseController
-<<<<<<< HEAD
   respond_to :json 
   before_filter :verify_auth_token 
 
