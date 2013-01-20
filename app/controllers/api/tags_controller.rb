@@ -1,4 +1,5 @@
 class Api::TagsController < Api::BaseController
+<<<<<<< HEAD
   respond_to :json 
   before_filter :verify_auth_token 
 
@@ -14,11 +15,7 @@ class Api::TagsController < Api::BaseController
           tags: @tags_list
         }
     else 
-      render :status => 404, 
-        :json => {
-          status: 404, 
-          sadface: "yes"
-        }
+      render_json_response(404, "no such user_id")
     end
   end
 
@@ -36,11 +33,7 @@ class Api::TagsController < Api::BaseController
           location: @tag.location 
         }
     else 
-      render :status => 404, 
-        :json => {
-          status: 404, 
-          sadface: "yes"
-        }
+      render_json_response(404, "No such tag_code")
     end
   end
 
@@ -58,11 +51,7 @@ class Api::TagsController < Api::BaseController
           location: @tag.location 
         }
     else 
-      render :status => 404, 
-        :json => {
-          status: 404, 
-          sadface: "yes"
-        }
+      render_json_response(404, "update failed")
     end
   end
 
@@ -79,11 +68,7 @@ class Api::TagsController < Api::BaseController
             tag: @tag
           }
       else 
-        render :status => 404, 
-          :json => {
-            status: 404, 
-            sadface: "yes"
-          }
+        render_json_response(404, "Tag not found")
       end
   end
 
@@ -92,7 +77,11 @@ class Api::TagsController < Api::BaseController
   # Route: /tags/(:tag_code)
   def destroy
     @tag = Tag.find_by_tag_code(params[:tag_code])
-    @tag.destroy
+    if @tag.destroy
+      render_json_response(200, "Removed tag successfully")
+    else
+      render_json_response(404, "Could not find tag")
+    end
   end
 
   # Pass in: tag parameters -- location and tag code
@@ -109,12 +98,7 @@ class Api::TagsController < Api::BaseController
           location: @tag.location
         }
     else 
-      render :status => 406,
-        :json => {
-        status: 406,
-        failure: "yes"
-      }
+      render_json_response(406, "Could not create tag")
     end
   end
-
 end
