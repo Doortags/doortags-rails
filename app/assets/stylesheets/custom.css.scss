@@ -5,6 +5,9 @@ header {
 	height: 60px; 
 	border-bottom: 1px solid black;
 
+	a {
+		color: black;
+	}
 	h1 {
 		size: 24.444;
 		font-weight: bold; 
@@ -47,6 +50,56 @@ header {
 		}
 
 	}
+}
+
+/* New User Page and Sign In */ 
+
+.newUser {
+	text-align: center;
+}
+
+.signIn {
+	text-align: center;
+}
+
+.newTag {
+	text-align: center;
+}
+
+
+/* Profile Page */ 
+
+.profileContainer {
+	text-align: center;
+	height: 80%;
+	box-shadow: 0 0 20px 2px black;
+
+	h1 {
+		font-family: 'Raleway';
+		font-size: 70px;
+		padding-top: 0.5em;
+	}
+
+	table {
+		margin-top: 2em;
+		margin-left: 15%;
+		width: 700px;
+		padding: 0.5em;
+		height: 30px;
+
+		tr {
+			height: 50px ;
+		}
+
+		td {
+			border-top: 1px solid black;
+		}
+	}
+
+	.newTagForm {
+		margin-top: 2em;
+	}
+
 }
 
 
@@ -117,6 +170,10 @@ header {
 	.span4.noLeft{
 		margin-left: 0;
 	}
+
+		p.pushDown {
+			margin-top: 3.6em;
+		}
 
 }
 

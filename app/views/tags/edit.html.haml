@@ -1,0 +1,10 @@
+.container 
+	.newTag
+		%h1 Edit Your Tag
+		= form_for @tag do |f|
+
+			= f.text_field :tag_code, default: @tag.tag_code
+
+			= f.text_field :location, default: @tag.location
+
+			= f.submit 'Edit My Tag', class: "btn btn-large btn-primary clearfix"

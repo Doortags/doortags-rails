@@ -1,11 +1,12 @@
 %header
-	%h1 DoorTags
+	%a{:href => "#"}
+		%h1 DoorTags
 	%nav
 		%ul
 			%li 
-				%a#scrollAbout About
+				%a#scrollAbout{:href => "#"} About
 			%li 
-				%a#scrollContact Contact
+				%a#scrollContact{:href => "#"} Contact
 			-unless current_user
 				%li 
 					%a#scrollSignUp= link_to "Sign Up", "/users/sign_up"

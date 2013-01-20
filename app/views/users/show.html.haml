@@ -1,12 +1,39 @@
-= @user 
+.container
+	.profileContainer
+		%h1 Profile
+		%table.table-bordered.table-hover
+			%tbody
+				%tr
+					%td Name 
+					%td= @user.name
+				%tr
+					%td Email
+					%td= @user.email
+				%tr 
+					%td Phone Number
+					%td= @user.phone
+		%h1 Tags
+		%table.table-bordered.table-hover 
+			%thead 
+				%tr
+					%th Tag Code
+					%th Tag Location
+					%th Edit
+					%th Delete
+			%tbody
+				-@tags_list.each do |tag|
+					-if tag.id?
+						%tr
+							%td= tag.tag_code
+							%td= tag.location	
+							%td= link_to "Edit", edit_tag_path(tag), class: "btn btn-primary"
+							%td= link_to "Delete", "/tags?id=#{tag.id}", method: :delete, class: "btn btn-danger"
 
-= form_for @tag do |f|
-  -if @tag.errors.any?
-    - @tag.errors.full_messages.each do |msg|
-      - flash[:error] = msg
+		.newTagForm
+			= form_for @tag do |f|
 
-  = f.text_field :location, placeholder: "Location Nick Name"
+				= f.text_field :tag_code, placeholder: "Tag Code"
 
-  = f.submit 'Make new tag location', class: "btn btn-large btn-primary clearfix"
+				= f.text_field :location, placeholder: "Location e.g. \"Home\""
 
-=@tags_list
+				= f.submit 'Make New Tag', class: "btn btn-large btn-primary clearfix"

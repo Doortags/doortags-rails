@@ -17,3 +17,7 @@
 
 	$('#scrollAbout').click -> 
 		scrollAboutPage ".steps"
+
+	$('#refresh').click -> 
+		locaion.reload()
+
