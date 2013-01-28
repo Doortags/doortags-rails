@@ -30,7 +30,7 @@ class Api::MessagesController < Api::BaseController
       @twilio_client.account.sms.messages.create(
         :from => "+1#{twilio_phone_number}",
         :to => number_to_send_to,
-        :body => "Hey, #{name} is at your #{location} and he says \"#{message}\""
+        :body => "Hey, #{name} is at your #{location} and says \"#{message}\""
       )	
 
       render :json => {
