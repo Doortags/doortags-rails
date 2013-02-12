@@ -8,7 +8,7 @@ gem 'devise'
 
 gem 'resque'
 gem 'haml-rails'
-gem 'json'
+gem 'json', '>= 1.7.7'
 gem 'mail'
 gem 'twilio-ruby'
 
