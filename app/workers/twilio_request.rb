@@ -1,23 +1,27 @@
 class TwilioRequest
   @queue = :twilio_queue
-  def self.perform(user_id, tag_id, message, sender_number, name)
-    user = User.find(user_id)
-    tag = Tag.find(tag_id)
+  SMS_LIMIT = 140
 
-    account_sid = APP_CONFIG["twilio"]["sid"]
-    auth_token  = APP_CONFIG["twilio"]["token"]
-    from        = APP_CONFIG["twilio"]["number"]
+  def self.perform(tag_id, name, message)
+    tag  = Tag.find(tag_id)
+    user = tag.user
+    location = tag.location
+
+    account_sid = APP_CONFIG[:twilio][:sid]
+    auth_token  = APP_CONFIG[:twilio][:token]
+    from        = APP_CONFIG[:twilio][:number]
+
+    sms_text = truncate(
+      "#{name} range your doorbell at #{location}: \"#{message}",
+      :length => SMS_LIMIT - 1    # make space for ending quote
+    )
+    sms_text << "\""
+
     client = Twilio::REST::Client.new account_sid, auth_token
-
-    number = ""
-    if sender_number
-      number =  " from phone number #{sender_number}"
-    end
-
     client.account.sms.messages.create(
-      :from => from,
+      :from => name,
       :to => user.phone,
-      :body => "#{name} left message at #{tag.location}#{number}. Message: #{message}"
+      :body => sms_text
     )
   end
 end
