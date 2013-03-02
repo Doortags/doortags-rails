@@ -1,0 +1,17 @@
+development:
+  twilio:
+    sid:    <%= ENV["twilio_sid"] %>
+    token:  <%= ENV["twilio_token"] %>
+    number: <%= ENV["twilio_number"] %>
+
+test:
+  twilio:
+    sid:    <%= ENV["twilio_sid"] %>
+    token:  <%= ENV["twilio_token"] %>
+    number: <%= ENV["twilio_number"] %>
+
+production:
+  twilio:
+    sid:    <%= ENV["twilio_sid"] %>
+    token:  <%= ENV["twilio_token"] %>
+    number: <%= ENV["twilio_number"] %>

@@ -4,10 +4,10 @@ class TwilioRequest
   	user = User.find(user_id)
   	tag = Tag.find(tag_id)
 
-  	account_sid = "ACe6eee82649316e9f918b80e7ed1a8693"
-  	auth_token = "f3cab3ce0871d20393d7a3cf37b1517b"
+  	account_sid = APP_CONFIG["twilio"]["sid"]
+  	auth_token  = APP_CONFIG["twilio"]["token"]
+  	from        = APP_CONFIG["twilio"]["number"]
   	client = Twilio::REST::Client.new account_sid, auth_token
-  	from = "+14848213139"
 
   	number = ""
   	if sender_number

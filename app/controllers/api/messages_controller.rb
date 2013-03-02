@@ -12,9 +12,9 @@ class Api::MessagesController < Api::BaseController
     number_to_send_to = user.phone
     location = Tag.find_by_id(tag_id).location
  
-    twilio_sid = "ACfffe2a378d744f6c9c2a280c93a5be21"
-    twilio_token = "374dca84e42fc9ca7f67319cb58b601a"
-    twilio_phone_number = "2674158802"
+    twilio_sid          = APP_CONFIG["twilio"]["sid"]
+    twilio_token        = APP_CONFIG["twilio"]["token"]
+    twilio_phone_number = APP_CONFIG["twilio"]["number"]
 
     if name.nil?
       name = "someone"
