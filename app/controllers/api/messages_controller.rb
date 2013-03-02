@@ -3,8 +3,8 @@ class Api::MessagesController < Api::BaseController
 
   # Pass in: tag_code. Message and name are optional
   # Sends message to user with said tag_code
-	def send_message_to
-		message = params[:message]
+  def send_message_to
+    message = params[:message]
     tag_id = params[:tag_id]
     name = params[:name]
 
@@ -33,7 +33,7 @@ class Api::MessagesController < Api::BaseController
         :from => "+1#{twilio_phone_number}",
         :to => number_to_send_to,
         :body => body
-      )	
+      )
 
       render :json => {
         itworks!: "hello"
@@ -46,5 +46,5 @@ class Api::MessagesController < Api::BaseController
       }
     end
 
-	end
+  end
 end
