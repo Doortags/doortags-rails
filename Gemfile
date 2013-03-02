@@ -1,15 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
-
 gem 'rails', '3.2.12'
 
 gem 'devise'
 
 gem 'resque'
 gem 'haml-rails'
-gem 'json', '>= 1.7.7'
-gem 'mail'
 gem 'twilio-ruby'
 
 group :development do
