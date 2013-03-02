@@ -8,15 +8,14 @@ gem 'resque'
 gem 'haml-rails'
 gem 'twilio-ruby'
 
+gem 'pg'
+
 group :development do
-  gem 'sqlite3'
   gem "better_errors"
   gem "binding_of_caller"
 end
 
 group :production do
-  # MySQL or PostgreSQL?
-  gem 'pg'
   gem 'thin'
 end
 
